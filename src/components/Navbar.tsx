@@ -8,7 +8,7 @@ import Cart from "./Cart";
 const Navbar = () => {
   const user = null;
   return (
-    <div className="bg-white sticky top-0 z-[999] inset-x-0 h-16">
+    <div className="bg-white sticky top-0 z-[50] inset-x-0 h-16">
       <header className="relative bg-white">
         <MaxWidthWrapper>
           <div className="border-b border border-gray-200">
