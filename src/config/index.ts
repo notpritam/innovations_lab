@@ -6,20 +6,17 @@ export const PRODUCT_CATEGORIES = [
       {
         name: "Sculptures",
         href: "#",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+        imageSrc: "/nav/artistic/sc1.jpg",
       },
       {
         name: "Figurines",
         href: "#",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+        imageSrc: "/nav/artistic/fg1.jpg",
       },
       {
         name: "Abstract Art",
         href: "#",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+        imageSrc: "/nav/artistic/ab1.jpg",
       },
     ],
   },
@@ -30,20 +27,17 @@ export const PRODUCT_CATEGORIES = [
       {
         name: "Tech Accessories",
         href: "#",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+        imageSrc: "/nav/artistic/ab1.jpg",
       },
       {
         name: "Wearables",
         href: "#",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+        imageSrc: "/nav/artistic/ab1.jpg",
       },
       {
         name: "DIY Electronics Enclosures",
         href: "#",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+        imageSrc: "/nav/artistic/ab1.jpg",
       },
     ],
   },
@@ -54,20 +48,17 @@ export const PRODUCT_CATEGORIES = [
       {
         name: "Science Models",
         href: "#",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+        imageSrc: "/nav/artistic/ab1.jpg",
       },
       {
         name: "Historical Replicas",
         href: "#",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+        imageSrc: "/nav/artistic/ab1.jpg",
       },
       {
         name: "Anatomy Models",
         href: "#",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+        imageSrc: "/nav/artistic/ab1.jpg",
       },
     ],
   },

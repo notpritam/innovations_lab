@@ -105,6 +105,9 @@ export const NavItem = ({
                           >
                             {subCategory.name}
                           </Link>
+                          <p className="mt-1" aria-hidden="true">
+                            Shop Now
+                          </p>
                         </div>
                       );
                     })}
