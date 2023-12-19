@@ -1,16 +1,36 @@
 "use client";
 import { PRODUCT_CATEGORIES } from "@/config";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { useOnClickOutside } from "@/hooks/use-on-click-outside";
 
 const NavItems = () => {
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
+  const navRef = useRef<HTMLDivElement | null>(null);
+
+  useOnClickOutside(navRef, () => {
+    setActiveIndex(null);
+  });
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveIndex(null);
+      }
+    };
+
+    document.addEventListener("keydown", handler);
+
+    return () => {
+      document.removeEventListener("keydown", handler);
+    };
+  }, []);
   return (
-    <div className="flex items-center gap-4 h-4">
+    <div ref={navRef} className="flex items-center gap-4 h-4">
       {PRODUCT_CATEGORIES.map((category, index) => {
         const handleOpen = () => {
           if (activeIndex === index) {
@@ -73,7 +93,7 @@ export const NavItem = ({
         <>
           <div
             className={cn(
-              "absolute inset-x-0 top-full text-sm text-muted-foreground",
+              "absolute bg-white inset-x-0 top-full text-sm text-muted-foreground",
               { "animate-in fade-in-10 slide-in-from-top-5": !isAnyOpen }
             )}
           >
