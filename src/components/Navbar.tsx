@@ -16,7 +16,7 @@ const Navbar = () => {
                 <Icons.logo />
               </div>
 
-              <div className="hidden lg:ml-8 lg:block lg:self-stretch z-[999]">
+              <div className="hidden lg:ml-8 lg:flex lg:items-center lg:self-stretch z-[999]">
                 <NavItems />
               </div>
             </div>
