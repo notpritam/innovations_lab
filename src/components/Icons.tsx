@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 export const Icons = {
-  logo: (className: string) => (
-    <Link href={"/"} className={className}>
-      Innovations Lab
+  logo: () => (
+    <Link href={"/"} className="text-2xl uppercase font-bold">
+      Innovations <span className="text-primary">Lab</span>
     </Link>
   ),
 };
