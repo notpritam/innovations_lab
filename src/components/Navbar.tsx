@@ -49,7 +49,7 @@ const Navbar = async () => {
                       Sign Up
                     </Link>
                   ) : (
-                    <UserAccountNav />
+                    <UserAccountNav user={user} />
                   )}
                   <div className="ml-4 flow-root lg:ml-6">
                     <Cart />
