@@ -1,3 +1,4 @@
+"use client";
 import { IndianRupee, ShoppingCart } from "lucide-react";
 import {
   Sheet,
@@ -11,10 +12,27 @@ import { Separator } from "./ui/separator";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import Image from "next/image";
+import { useCart } from "@/hooks/use-cart";
+import CartItem from "./CartItem";
+import { ScrollArea } from "./ui/scroll-area";
+import { useEffect, useState } from "react";
 
 const Cart = () => {
-  const itemCount = 0;
+  const { items } = useCart();
+  const itemCount = items.length;
   const fee = 10;
+
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  const cartTotal = items.reduce(
+    (total, { product }) => total + product.price,
+    0
+  );
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <Sheet>
       <SheetTrigger className="group -m-2 flex items-center p-2">
@@ -23,18 +41,22 @@ const Cart = () => {
           className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
         />
         <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-          0
+          {isMounted ? itemCount : 0}
         </span>
       </SheetTrigger>
       <SheetContent className="flex w-full flex-col sm:max-w-lg">
         <SheetHeader className="space-y-2.5 pr-6">
-          <SheetTitle>Cart {0}</SheetTitle>
+          <SheetTitle>Cart ({isMounted ? itemCount : ""})</SheetTitle>
         </SheetHeader>
         {itemCount > 0 ? (
           <>
             <div className="flex w-full flex-col pr-6">
               {/* Todo : Cart Items*/}
-              Cart Items
+              <ScrollArea>
+                {items.map(({ product }) => (
+                  <CartItem key={product.id} product={product} />
+                ))}
+              </ScrollArea>
             </div>
             <div className="space-y-4 pr-6">
               <Separator />
@@ -52,7 +74,7 @@ const Cart = () => {
                 <div className="flex">
                   <span className="flex-1">Total</span>
                   <span className="flex items-center">
-                    {/* <IndianRupee className="h-3 " />  */}₹ {fee}
+                    {/* <IndianRupee className="h-3 " />  */}₹ {cartTotal + fee}
                   </span>
                 </div>
               </div>
