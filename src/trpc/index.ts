@@ -1,9 +1,9 @@
 import { z } from "zod";
 import { authRouter } from "./auth.router";
 import { publicProcedure, router } from "./trpc";
-import { QueryValidator } from "@/lib/validators/query-validators";
+import { QueryValidator } from "../lib/validators/query-validators";
 import payload from "payload";
-import { getPayloadClient } from "@/get.payload";
+import { getPayloadClient } from "../get.payload";
 
 export const appRouter = router({
   auth: authRouter,
