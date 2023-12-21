@@ -7,6 +7,7 @@ import { Pagination } from "swiper/modules";
 import { useEffect, useState } from "react";
 import type SwiperType from "swiper";
 import { cn } from "@/lib/utils";
+import { ChevronLeft, ChevronRight, ChevronRightIcon } from "lucide-react";
 
 interface ImageSliderProps {
   urls: string[];
@@ -21,38 +22,50 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
     isEnd: activeIndex === urls.length - 1,
   });
 
-  const onSlideChange = () => {
-    if (swiper) {
-      setActiveIndex(swiper.activeIndex);
-    }
-  };
-
   useEffect(() => {
-    swiper?.on("slideChange", onSlideChange);
-    setSlideConfig({
-      isBegining: activeIndex === 0,
-      isEnd: activeIndex === urls.length - 1,
+    swiper?.on("slideChange", ({ activeIndex }) => {
+      setActiveIndex(activeIndex);
+      setSlideConfig({
+        isBegining: activeIndex === 0,
+        isEnd: activeIndex === (urls.length ?? 0) - 1,
+      });
     });
   }, [swiper, urls]);
 
   const activeStyles =
-    "active:scale-[0.97] grid opacity-100 hover:scale-[105] absolute top-1/2 -translate-y-1/2 aspect-square z-50 h-8 w-8 place-items-center rounded-full bg-white border-zinc-300 border-2";
-  const inActiveStyles = "hidden text-gray-400";
+    "active:scale-[0.97] grid opacity-100 hover:scale-105 absolute top-1/2 -translate-y-1/2 aspect-square h-8 w-8 z-50 place-items-center rounded-full border-2 bg-white border-zinc-300";
+  const inactiveStyles = "hidden text-gray-400";
   return (
     <div className=" group relative bg-zinc-100 aspect-square overflow-hidden rounded-xl">
       <div className="absolute z-10 inset-0 opacity-0 group-hover:opacity-100 transition ">
         <button
-          className={cn(activeIndex, "right-3 transition", {
-            inActiveStyles: slideConfig.isEnd,
+          onClick={(e) => {
+            e.preventDefault();
+            swiper?.slideNext();
+          }}
+          className={cn(activeStyles, "right-3 transition", {
+            [inactiveStyles]: slideConfig.isEnd,
             "hover:bg-primary-300 text-primary-800 opacity-100":
               !slideConfig.isEnd,
           })}
-        ></button>
+          aria-label="next image"
+        >
+          <ChevronRight className="h-4 w-4 text-zinc-700" />{" "}
+        </button>
         <button
-          className={cn(activeIndex, "left-3 transition", {
-            inActiveStyles: slideConfig.isEnd,
+          onClick={(e) => {
+            e.preventDefault();
+            swiper?.slidePrev();
+          }}
+          className={cn(activeStyles, "left-3 transition", {
+            [inactiveStyles]: slideConfig.isBegining,
+            "hover:bg-primary-300 text-primary-800 opacity-100":
+              !slideConfig.isBegining,
           })}
-        ></button>
+          aria-label="previous image"
+        >
+          <ChevronLeft className="h-4 w-4 text-zinc-700" />{" "}
+        </button>
       </div>
       <Swiper
         onSwiper={(swiper) => setSwiper(swiper)}
