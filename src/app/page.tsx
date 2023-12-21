@@ -49,7 +49,11 @@ export default function Home() {
 
         {/* TODO: List Products */}
 
-        <ProductReel title="Brand New" href="/" />
+        <ProductReel
+          query={{ sort: "desc", limit: 4 }}
+          title="Brand New"
+          href="/products"
+        />
       </MaxWidthWrapper>
 
       <section className="boder-t border-gray-200 bg-blue-200">
