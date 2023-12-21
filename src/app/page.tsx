@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const perks = [
   {
-    name: "Instant Delivery",
+    name: "Fastest Delivery",
     icons: Truck,
     description:
       "Get Your 3D Models ASAP with our lightning-fast delivery service.",
