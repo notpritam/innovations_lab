@@ -1,8 +1,10 @@
+import AddToCartButton from "@/components/AddToCartButton";
 import ImageSlider from "@/components/ImageSlider";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import ProductReel from "@/components/ProductReel";
 import { PRODUCT_CATEGORIES } from "@/config";
 import { getPayloadClient } from "@/get.payload";
-import { Check } from "lucide-react";
+import { Check, Shield } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -126,8 +128,34 @@ const Page = async ({ params }: PageProps) => {
               <ImageSlider urls={validUrls} />
             </div>
           </div>
+
+          <div className="mt-10 lg:col-start-1 lg:max-w-lg lg:row-start-2 lg:self-start">
+            <div>
+              <div className="mt-10">
+                <AddToCartButton />
+              </div>
+              <div className="mt-6 text-center">
+                <div className="group inline-flex text-sm font-medium">
+                  <Shield
+                    aria-hidden="true"
+                    className="text-gray-400 h-5 w-5 mr-2 flex-shrink-0"
+                  />
+                  <span className="text-muted-foreground hover:text-gray-700">
+                    30 Days Return Gurantee
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <ProductReel
+        href="/products"
+        query={{ category: product.category, limit: 4 }}
+        title="Related Products"
+        subtitle="You may also like these products"
+      />
     </MaxWidthWrapper>
   );
 };
